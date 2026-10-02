@@ -1,0 +1,242 @@
+/* ================================
+   MODAL
+================================ */
+
+.movie-details-modal {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+
+/* ================================
+   CARD
+================================ */
+
+.movie-details-card {
+  position: relative;
+
+  width: 100% !important;
+  max-width: 650px !important;
+
+  max-height: 92vh;
+
+  overflow-y: auto;
+
+  border-radius: 16px !important;
+
+  outline: none;
+
+  background: #ffffff !important;
+
+  color: #172033 !important;
+
+  box-shadow:
+    0 20px 60px rgba(15, 23, 42, 0.35) !important;
+}
+
+
+/* ================================
+   CLOSE BUTTON
+================================ */
+
+.movie-details-close {
+  position: absolute !important;
+
+  top: 12px;
+  right: 12px;
+
+  z-index: 10;
+
+  width: 40px !important;
+  height: 40px !important;
+
+  min-width: 40px !important;
+
+  padding: 0 !important;
+
+  border-radius: 50% !important;
+
+  background: rgba(255, 255, 255, 0.95) !important;
+
+  color: #334155 !important;
+
+  box-shadow:
+    0 3px 10px rgba(15, 23, 42, 0.18);
+
+  transition: 0.2s ease !important;
+}
+
+.movie-details-close:hover {
+  background: #e2e8f0 !important;
+
+  transform: rotate(90deg);
+}
+
+
+/* ================================
+   POSTER
+================================ */
+
+.movie-details-poster {
+  width: 100% !important;
+
+  height: 430px !important;
+
+  object-fit: cover !important;
+
+  display: block;
+}
+
+
+/* ================================
+   INFORMATION
+================================ */
+
+.movie-details-info {
+  padding: 24px 28px 28px;
+}
+
+
+/* ================================
+   TITLE
+================================ */
+
+.movie-details-title {
+  font-size: 28px !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.3 !important;
+
+  color: #172033 !important;
+
+  margin-bottom: 10px !important;
+}
+
+
+/* ================================
+   DESCRIPTION
+================================ */
+
+.movie-details-description {
+  font-size: 15px !important;
+
+  line-height: 1.7 !important;
+
+  color: #475569 !important;
+
+  margin-bottom: 20px !important;
+}
+
+
+/* ================================
+   DETAILS
+================================ */
+
+.movie-details-row {
+  display: flex;
+
+  gap: 6px;
+
+  margin-bottom: 9px;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  color: #475569;
+}
+
+.movie-details-label {
+  min-width: 100px;
+
+  font-weight: 700;
+
+  color: #172033;
+}
+
+
+/* ================================
+   TRAILER
+================================ */
+
+.movie-details-trailer {
+  width: 100% !important;
+
+  min-height: 45px !important;
+
+  margin-top: 18px !important;
+
+  border-radius: 8px !important;
+
+  background: #a0047e !important;
+
+  color: #ffffff !important;
+
+  font-size: 14px !important;
+
+  font-weight: 700 !important;
+
+  text-transform: uppercase !important;
+
+  transition: 0.2s ease !important;
+}
+
+.movie-details-trailer:hover {
+  background: #7A0361 !important;
+
+  transform: translateY(-1px);
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+  .movie-details-modal {
+    padding: 10px;
+  }
+
+  .movie-details-card {
+    max-height: 95vh;
+
+    border-radius: 12px !important;
+  }
+
+  .movie-details-poster {
+    height: 350px !important;
+  }
+
+  .movie-details-info {
+    padding: 20px;
+  }
+
+  .movie-details-title {
+    font-size: 24px !important;
+  }
+
+  .movie-details-description {
+    font-size: 14px !important;
+
+    line-height: 1.6 !important;
+  }
+
+  .movie-details-row {
+    display: block;
+
+    margin-bottom: 12px;
+  }
+
+  .movie-details-label {
+    display: block;
+
+    min-width: auto;
+
+    margin-bottom: 2px;
+  }
+}
