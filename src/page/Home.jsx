@@ -14,19 +14,11 @@ import "./Home.css";
 function Home({ search }) {
   const [sort, setSort] = useState("");
 
-  // =========================
-  // SEARCH MOVIES
-  // =========================
-
   let filteredMovies = movies.filter((movie) =>
     movie.title
       .toLowerCase()
       .includes(search.toLowerCase())
   );
-
-  // =========================
-  // SORT A → Z
-  // =========================
 
   if (sort === "az") {
     filteredMovies = [...filteredMovies].sort(
@@ -34,10 +26,6 @@ function Home({ search }) {
         a.title.localeCompare(b.title)
     );
   }
-
-  // =========================
-  // SORT Z → A
-  // =========================
 
   if (sort === "za") {
     filteredMovies = [...filteredMovies].sort(
@@ -48,18 +36,11 @@ function Home({ search }) {
 
   return (
     <Box className="home-page">
-
       <Container
         maxWidth="xl"
         className="home-container"
       >
-
-        {/* =========================
-            PAGE HEADER
-        ========================= */}
-
         <Box className="movies-header">
-
           <Typography
             variant="h3"
             className="movies-title"
@@ -67,10 +48,7 @@ function Home({ search }) {
             Movies
           </Typography>
 
-          {/* SORT BUTTONS */}
-
           <Box className="sort-buttons">
-
             <Button
               className={`sort-button ${
                 sort === "az"
@@ -82,9 +60,7 @@ function Home({ search }) {
                   ? "contained"
                   : "outlined"
               }
-              onClick={() =>
-                setSort("az")
-              }
+              onClick={() => setSort("az")}
             >
               A → Z
             </Button>
@@ -100,72 +76,44 @@ function Home({ search }) {
                   ? "contained"
                   : "outlined"
               }
-              onClick={() =>
-                setSort("za")
-              }
+              onClick={() => setSort("za")}
             >
               Z → A
             </Button>
-
           </Box>
         </Box>
-
-
-        {/* =========================
-            MOVIE GRID
-        ========================= */}
 
         <Grid
           container
           spacing={3}
           className="movies-grid"
         >
-
-          {filteredMovies.map(
-            (movie) => (
-              <Grid
-                key={movie.id}
-                size={{
-                  xs: 12,
-                  sm: 6,
-                  md: 3,
-                }}
-              >
-                <MovieCard
-                  movie={movie}
-                />
-              </Grid>
-            )
-          )}
-
+          {filteredMovies.map((movie) => (
+            <Grid
+              key={movie.id}
+              size={{
+                xs: 12,
+                sm: 6,
+                md: 3,
+              }}
+            >
+              <MovieCard movie={movie} />
+            </Grid>
+          ))}
         </Grid>
-
-
-        {/* =========================
-            NO MOVIES
-        ========================= */}
 
         {filteredMovies.length === 0 && (
           <Box className="no-movies">
-
-            <Typography
-              variant="h6"
-            >
+            <Typography variant="h6">
               😔 No movies found
             </Typography>
 
-            <Typography
-              variant="body2"
-            >
-              Try searching with
-              another movie name.
+            <Typography variant="body2">
+              Try searching with another movie name.
             </Typography>
-
           </Box>
         )}
-
       </Container>
-
     </Box>
   );
 }

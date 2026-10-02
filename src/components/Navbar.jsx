@@ -14,19 +14,9 @@ function Navbar({
 }) {
   return (
     <Box className="navbar">
-
-      {/* =========================
-          LOGO
-      ========================= */}
-
       <Typography className="navbar-logo">
         🎬 MoviesApp
       </Typography>
-
-
-      {/* =========================
-          SEARCH
-      ========================= */}
 
       <TextField
         size="small"
@@ -37,22 +27,12 @@ function Navbar({
         }
       />
 
-
-      {/* =========================
-          HOME
-      ========================= */}
-
       <Button
         component={Link}
         to="/"
       >
         Home
       </Button>
-
-
-      {/* =========================
-          EDIT
-      ========================= */}
 
       <Button
         component={Link}
@@ -61,11 +41,6 @@ function Navbar({
         Edit
       </Button>
 
-
-      {/* =========================
-          DARK / LIGHT MODE
-      ========================= */}
-
       <Button
         onClick={toggleTheme}
       >
@@ -73,7 +48,6 @@ function Navbar({
           ? "🌙"
           : "☀️"}
       </Button>
-
     </Box>
   );
 }

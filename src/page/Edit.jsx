@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import InputBase from "@mui/material/InputBase";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Box,
+  Typography,
+  IconButton,
+  InputBase,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 
 import SearchIcon from "@mui/icons-material/Search";
 import DownloadIcon from "@mui/icons-material/Download";
@@ -27,11 +29,11 @@ function Edit() {
   const isDark = theme.palette.mode === "dark";
 
   const [rows, setRows] = useState(movies);
-  const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState(null);
 
-  const [editMovieData, setEditMovieData] = useState({
+  const [movie, setMovie] = useState({
     id: "",
     title: "",
     description: "",
@@ -44,65 +46,26 @@ function Edit() {
     trailer: "",
   });
 
-  const filteredRows = rows.filter((movie) => {
-    const text = search.toLowerCase();
+  const filteredMovies = rows.filter((item) =>
+    item.title.toLowerCase().includes(search.toLowerCase())
+  );
 
-    return (
-      String(movie.id || "").toLowerCase().includes(text) ||
-      String(movie.title || "").toLowerCase().includes(text) ||
-      String(movie.description || "").toLowerCase().includes(text) ||
-      String(movie.duration || "").toLowerCase().includes(text) ||
-      String(movie.releaseDate || "").toLowerCase().includes(text) ||
-      String(movie.cast || "").toLowerCase().includes(text) ||
-      String(movie.director || "").toLowerCase().includes(text) ||
-      String(movie.producer || "").toLowerCase().includes(text) ||
-      String(movie.rating || "").toLowerCase().includes(text)
-    );
-  });
-
-  const editMovie = (movie) => {
-    setEditMovieData({
-      id: movie.id,
-      title: movie.title || "",
-      description: movie.description || "",
-      duration: movie.duration || "",
-      releaseDate: movie.releaseDate || "",
-      cast: movie.cast || "",
-      director: movie.director || "",
-      producer: movie.producer || "",
-      rating: movie.rating || "",
-      trailer: movie.trailer || "",
-    });
-
+  const editMovie = (item) => {
+    setMovie(item);
     setOpen(true);
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setEditMovieData({
-      ...editMovieData,
-      [name]: value,
+    setMovie({
+      ...movie,
+      [e.target.name]: e.target.value,
     });
   };
 
   const saveMovie = () => {
     setRows(
-      rows.map((movie) =>
-        movie.id === editMovieData.id
-          ? {
-              ...movie,
-              title: editMovieData.title,
-              description: editMovieData.description,
-              duration: editMovieData.duration,
-              releaseDate: editMovieData.releaseDate,
-              cast: editMovieData.cast,
-              director: editMovieData.director,
-              producer: editMovieData.producer,
-              rating: editMovieData.rating,
-              trailer: editMovieData.trailer,
-            }
-          : movie
+      rows.map((item) =>
+        item.id === movie.id ? movie : item
       )
     );
 
@@ -120,54 +83,44 @@ function Edit() {
       "Director",
       "Producer",
       "Rating",
-      "Trailer URL",
+      "Trailer",
     ];
 
-    const data = filteredRows.map((movie) => [
-      movie.id,
-      movie.title,
-      movie.description,
-      movie.duration,
-      movie.releaseDate,
-      movie.cast,
-      movie.director,
-      movie.producer,
-      movie.rating,
-      movie.trailer,
+    const data = rows.map((item) => [
+      item.id,
+      item.title,
+      item.description,
+      item.duration,
+      item.releaseDate,
+      item.cast,
+      item.director,
+      item.producer,
+      item.rating,
+      item.trailer,
     ]);
 
     const csv = [headers, ...data]
-      .map((row) =>
-        row
-          .map((value) =>
-            `"${String(value ?? "").replace(/"/g, '""')}"`
-          )
-          .join(",")
-      )
+      .map((row) => row.join(","))
       .join("\n");
 
     const blob = new Blob([csv], {
-      type: "text/csv;charset=utf-8;",
+      type: "text/csv",
     });
 
     const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
 
+    const link = document.createElement("a");
     link.href = url;
     link.download = "movies.csv";
-
-    document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link);
 
     URL.revokeObjectURL(url);
-
-    setAnchorEl(null);
+    setMenu(null);
   };
 
   const printMovies = () => {
     window.print();
-    setAnchorEl(null);
+    setMenu(null);
   };
 
   const columns = [
@@ -218,20 +171,18 @@ function Edit() {
     },
     {
       field: "trailer",
-      headerName: "Trailer URL",
+      headerName: "Trailer",
       width: 250,
     },
     {
       field: "action",
       headerName: "Action",
-      width: 120,
-      sortable: false,
+      width: 100,
       renderCell: (params) => (
         <Button
           variant="contained"
           size="small"
           onClick={() => editMovie(params.row)}
-          className="edit-button"
         >
           Edit
         </Button>
@@ -241,77 +192,68 @@ function Edit() {
 
   return (
     <Box className={isDark ? "edit-page dark" : "edit-page"}>
-      <Box className="edit-main">
-        <Typography
-          variant="h4"
-          className="edit-title"
-        >
-          Edit Movies
-        </Typography>
 
-        <Box className="table-box">
-          <Box className="edit-toolbar">
-            <Box className="search-box">
-              <SearchIcon className="search-icon" />
+      <Typography
+        variant="h4"
+        className="edit-title"
+      >
+        Edit Movies
+      </Typography>
 
-              <InputBase
-                placeholder="Search..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="search-input"
-              />
-            </Box>
+      <Box className="edit-toolbar">
 
-            <IconButton
-              onClick={(e) => setAnchorEl(e.currentTarget)}
-              className="download-button"
-            >
-              <DownloadIcon />
-            </IconButton>
+        <Box className="search-box">
+          <SearchIcon className="search-icon" />
 
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={() => setAnchorEl(null)}
-              PaperProps={{
-                className: isDark
-                  ? "export-menu dark"
-                  : "export-menu",
-              }}
-            >
-              <MenuItem onClick={printMovies}>
-                🖨️ Print
-              </MenuItem>
-
-              <MenuItem onClick={downloadCSV}>
-                📥 Download as CSV
-              </MenuItem>
-            </Menu>
-          </Box>
-
-          <Box className="data-grid-box">
-            <DataGrid
-              rows={filteredRows}
-              columns={columns}
-              checkboxSelection
-              pageSizeOptions={[5, 10, 20]}
-              initialState={{
-                pagination: {
-                  paginationModel: {
-                    pageSize: 5,
-                    page: 0,
-                  },
-                },
-              }}
-              disableRowSelectionOnClick
-              className={
-                isDark
-                  ? "movie-data-grid dark"
-                  : "movie-data-grid"
-              }
-            />
-          </Box>
+          <InputBase
+            placeholder="Search movie..."
+            value={search}
+            onChange={(e) =>
+              setSearch(e.target.value)
+            }
+          />
         </Box>
+
+        <IconButton
+          onClick={(e) =>
+            setMenu(e.currentTarget)
+          }
+        >
+          <DownloadIcon />
+        </IconButton>
+
+        <Menu
+          anchorEl={menu}
+          open={Boolean(menu)}
+          onClose={() => setMenu(null)}
+        >
+          <MenuItem onClick={printMovies}>
+            🖨️ Print
+          </MenuItem>
+
+          <MenuItem onClick={downloadCSV}>
+            📥 Download CSV
+          </MenuItem>
+        </Menu>
+
+      </Box>
+
+      <Box className="data-grid-box">
+        <DataGrid
+          rows={filteredMovies}
+          columns={columns}
+          checkboxSelection
+          pageSizeOptions={[5, 10, 20]}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 5,
+                page: 0,
+              },
+            },
+          }}
+          disableRowSelectionOnClick
+        />
       </Box>
 
       <Dialog
@@ -319,115 +261,99 @@ function Edit() {
         onClose={() => setOpen(false)}
         fullWidth
         maxWidth="md"
-        PaperProps={{
-          className: isDark
-            ? "edit-dialog dark"
-            : "edit-dialog",
-        }}
       >
-        <DialogTitle className="dialog-title">
+
+        <DialogTitle>
           ✏️ Edit Movie
         </DialogTitle>
 
-        <DialogContent className="dialog-content">
+        <DialogContent>
+
           <Box className="form-grid">
+
             <TextField
               label="Movie Name"
               name="title"
-              value={editMovieData.title}
+              value={movie.title}
               onChange={handleChange}
               fullWidth
-              size="small"
-              className="edit-text-field"
             />
 
             <TextField
               label="Duration"
               name="duration"
-              value={editMovieData.duration}
+              value={movie.duration}
               onChange={handleChange}
               fullWidth
-              size="small"
-              className="edit-text-field"
             />
 
             <TextField
               label="Release Date"
               name="releaseDate"
-              value={editMovieData.releaseDate}
+              value={movie.releaseDate}
               onChange={handleChange}
               fullWidth
-              size="small"
-              className="edit-text-field"
             />
 
             <TextField
               label="Rating"
               name="rating"
-              value={editMovieData.rating}
+              value={movie.rating}
               onChange={handleChange}
               fullWidth
-              size="small"
-              className="edit-text-field"
             />
 
             <TextField
               label="Cast"
               name="cast"
-              value={editMovieData.cast}
+              value={movie.cast}
               onChange={handleChange}
               fullWidth
-              size="small"
-              className="edit-text-field"
             />
 
             <TextField
               label="Director"
               name="director"
-              value={editMovieData.director}
+              value={movie.director}
               onChange={handleChange}
               fullWidth
-              size="small"
-              className="edit-text-field"
             />
 
             <TextField
               label="Producer"
               name="producer"
-              value={editMovieData.producer}
+              value={movie.producer}
               onChange={handleChange}
               fullWidth
-              size="small"
-              className="edit-text-field"
             />
 
             <TextField
               label="Trailer URL"
               name="trailer"
-              value={editMovieData.trailer}
+              value={movie.trailer}
               onChange={handleChange}
               fullWidth
-              size="small"
-              className="edit-text-field"
             />
 
             <TextField
               label="Description"
               name="description"
-              value={editMovieData.description}
+              value={movie.description}
               onChange={handleChange}
-              fullWidth
               multiline
               rows={4}
-              className="edit-text-field description-field"
+              fullWidth
+              className="description-field"
             />
+
           </Box>
+
         </DialogContent>
 
-        <DialogActions className="dialog-actions">
+        <DialogActions>
+
           <Button
             onClick={() => setOpen(false)}
-            className="cancel-button"
           >
             Cancel
           </Button>
@@ -435,12 +361,14 @@ function Edit() {
           <Button
             variant="contained"
             onClick={saveMovie}
-            className="save-button"
           >
             Save Changes
           </Button>
+
         </DialogActions>
+
       </Dialog>
+
     </Box>
   );
 }

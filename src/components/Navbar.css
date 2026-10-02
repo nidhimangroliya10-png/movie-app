@@ -1,46 +1,26 @@
-/* ================================
-   NAVBAR
-================================ */
-
 .navbar {
   width: 100%;
   min-height: 72px;
-
   display: flex;
   align-items: center;
   gap: 12px;
-
   padding: 12px 32px;
   box-sizing: border-box;
-
   background: #a0047e;
-
   border-bottom: 1px solid #a0047e;
-
   box-shadow: 0 4px 18px rgba(15, 23, 42, 0.22);
-
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-
-/* ================================
-   LOGO
-================================ */
-
 .navbar-logo {
   font-size: 22px !important;
   font-weight: 800 !important;
-
   color: #ffffff !important;
-
   margin-right: auto !important;
-
   white-space: nowrap;
-
   cursor: pointer;
-
   transition: 0.2s ease;
 }
 
@@ -48,11 +28,6 @@
   opacity: 0.9;
   transform: translateY(-1px);
 }
-
-
-/* ================================
-   SEARCH
-================================ */
 
 .navbar .MuiTextField-root {
   width: 230px;
@@ -86,70 +61,37 @@
   border-width: 2px;
 }
 
-
-/* ================================
-   BUTTONS
-================================ */
-
 .navbar .MuiButton-root {
   min-width: auto;
   min-height: 40px;
-
   padding: 8px 15px;
-
   border-radius: 8px;
-
   color: #f8fafc;
-
   background: transparent;
-
   text-transform: none;
-
   font-size: 14px;
   font-weight: 600;
-
   transition: 0.2s ease;
 }
 
-
-/* ================================
-   BUTTON HOVER
-================================ */
-
 .navbar .MuiButton-root:hover {
   background: #6b0055;
-
   color: #ffffff;
-
   transform: translateY(-1px);
 }
-
-
-/* ================================
-   THEME BUTTON
-================================ */
 
 .navbar .MuiButton-root:last-child {
   width: 42px;
   min-width: 42px;
-
   padding: 8px;
-
   font-size: 18px;
-
   border: 1px solid #d946a8;
-
   background: #6b0055;
 }
 
 .navbar .MuiButton-root:last-child:hover {
   background: #7a0361;
 }
-
-
-/* ================================
-   MOBILE
-================================ */
 
 @media (max-width: 900px) {
   .navbar {
@@ -166,15 +108,11 @@
   }
 }
 
-
 @media (max-width: 650px) {
   .navbar {
     min-height: auto;
-
     flex-wrap: wrap;
-
     padding: 14px 16px;
-
     gap: 8px;
   }
 

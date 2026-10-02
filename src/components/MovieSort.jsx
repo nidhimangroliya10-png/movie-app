@@ -9,21 +9,22 @@ import {
   Typography,
 } from "@mui/material";
 
-
-
 function MovieSort() {
   const [sort, setSort] = useState("");
 
   let sortedMovies = [...movies];
 
   if (sort === "az") {
-    sortedMovies.sort((a, b) => a.title.localeCompare(b.title));
+    sortedMovies.sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
   }
 
   if (sort === "za") {
-    sortedMovies.sort((a, b) => b.title.localeCompare(a.title));
+    sortedMovies.sort((a, b) =>
+      b.title.localeCompare(a.title)
+    );
   }
-
 
   return (
     <Box className="sort-page">
@@ -46,7 +47,10 @@ function MovieSort() {
 
       {sortedMovies.map((movie) => (
         <Box key={movie.id} className="movie-sort-card">
-          <Typography variant="h6" className="movie-sort-title">
+          <Typography
+            variant="h6"
+            className="movie-sort-title"
+          >
             {movie.title}
           </Typography>
 

@@ -1,158 +1,82 @@
-/* ========================================
-   HOME PAGE
-======================================== */
-
 .home-page {
   min-height: calc(100vh - 72px);
-
   padding: 32px 0 50px;
-
   background: transparent;
-
   color: inherit;
-
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
 }
 
-
-/* ========================================
-   HEADER
-======================================== */
-
 .movies-header {
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   margin-bottom: 30px;
-
   gap: 20px;
-
   flex-wrap: wrap;
 }
 
-
-/* ========================================
-   TITLE
-======================================== */
-
 .movies-title {
   font-size: 36px !important;
-
   font-weight: 500 !important;
-
   color: inherit !important;
 }
 
-
-/* ========================================
-   SORT
-======================================== */
-
 .sort-buttons {
   display: flex;
-
   gap: 10px;
 }
 
-
 .sort-button {
   min-width: 92px !important;
-
   height: 46px !important;
-
   padding: 8px 18px !important;
-
   border-radius: 10px !important;
-
   border: 1px solid #a0047e !important;
-
   color: #a0047e !important;
-
   background: #ffffff !important;
-
   font-size: 14px !important;
-
   font-weight: 600 !important;
-
   text-transform: none !important;
-
   transition: 0.2s ease;
 }
 
-
-/* ========================================
-   HOVER
-======================================== */
-
 .sort-button:hover {
   background: #7a0361 !important;
-
   color: #ffffff !important;
-
   border-color: #7a0361 !important;
-
   transform: translateY(-1px);
 }
 
-
-/* ========================================
-   ACTIVE
-======================================== */
-
 .sort-button.sort-active {
   background: #a0047e !important;
-
   color: #ffffff !important;
-
   border-color: #a0047e !important;
-
   box-shadow: 0 4px 10px rgba(160, 4, 126, 0.25);
 }
 
-
-/* ========================================
-   DARK MODE
-======================================== */
-
 .app.dark .sort-button {
   background: #151922 !important;
-
   color: #d946a8 !important;
-
   border-color: #a0047e !important;
 }
 
 .app.dark .sort-button:hover {
   background: #7a0361 !important;
-
   color: #ffffff !important;
-
   border-color: #7a0361 !important;
 }
 
 .app.dark .sort-button.sort-active {
   background: #a0047e !important;
-
   color: #ffffff !important;
-
   border-color: #a0047e !important;
 }
 
-
-/* ========================================
-   NO MOVIES
-======================================== */
-
 .no-movies {
   text-align: center;
-
   padding: 80px 20px;
-
   color: #666666;
 }
 
@@ -160,13 +84,7 @@
   color: #c4cbd5;
 }
 
-
-/* ========================================
-   MOBILE
-======================================== */
-
 @media (max-width: 600px) {
-
   .home-page {
     padding: 20px 0 40px;
   }

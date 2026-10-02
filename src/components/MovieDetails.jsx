@@ -20,22 +20,12 @@ function MovieDetails({ movie, open, onClose }) {
       className="movie-details-modal"
     >
       <Card className="movie-details-card">
-
-        {/* =========================
-            CLOSE BUTTON
-        ========================= */}
-
         <IconButton
           onClick={onClose}
           className="movie-details-close"
         >
           <CloseIcon />
         </IconButton>
-
-
-        {/* =========================
-            MOVIE POSTER
-        ========================= */}
 
         <CardMedia
           component="img"
@@ -44,15 +34,7 @@ function MovieDetails({ movie, open, onClose }) {
           className="movie-details-poster"
         />
 
-
-        {/* =========================
-            MOVIE INFORMATION
-        ========================= */}
-
         <Box className="movie-details-info">
-
-          {/* Movie Title */}
-
           <Typography
             variant="h5"
             className="movie-details-title"
@@ -60,17 +42,9 @@ function MovieDetails({ movie, open, onClose }) {
             {movie.title}
           </Typography>
 
-
-          {/* Description */}
-
-          <Typography
-            className="movie-details-description"
-          >
+          <Typography className="movie-details-description">
             {movie.description}
           </Typography>
-
-
-          {/* Duration */}
 
           <Box className="movie-details-row">
             <span className="movie-details-label">
@@ -82,9 +56,6 @@ function MovieDetails({ movie, open, onClose }) {
             </span>
           </Box>
 
-
-          {/* Release Date */}
-
           <Box className="movie-details-row">
             <span className="movie-details-label">
               Release Date:
@@ -94,9 +65,6 @@ function MovieDetails({ movie, open, onClose }) {
               {movie.releaseDate}
             </span>
           </Box>
-
-
-          {/* Cast */}
 
           <Box className="movie-details-row">
             <span className="movie-details-label">
@@ -108,9 +76,6 @@ function MovieDetails({ movie, open, onClose }) {
             </span>
           </Box>
 
-
-          {/* Director */}
-
           <Box className="movie-details-row">
             <span className="movie-details-label">
               Director:
@@ -120,9 +85,6 @@ function MovieDetails({ movie, open, onClose }) {
               {movie.director}
             </span>
           </Box>
-
-
-          {/* Producer */}
 
           <Box className="movie-details-row">
             <span className="movie-details-label">
@@ -134,11 +96,6 @@ function MovieDetails({ movie, open, onClose }) {
             </span>
           </Box>
 
-
-          {/* =========================
-              TRAILER
-          ========================= */}
-
           <Button
             href={movie.trailer}
             target="_blank"
@@ -147,9 +104,7 @@ function MovieDetails({ movie, open, onClose }) {
           >
             ▶ Watch Trailer
           </Button>
-
         </Box>
-
       </Card>
     </Modal>
   );

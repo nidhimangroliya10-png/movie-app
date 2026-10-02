@@ -19,31 +19,16 @@ function MovieCard({ movie }) {
   return (
     <>
       <Card className="movie-card">
-
-        {/* =========================
-            MOVIE IMAGE
-        ========================= */}
-
         <Box className="movie-image-wrapper">
-
           <CardMedia
             component="img"
             image={movie.image}
             alt={movie.title}
             className="movie-image"
           />
-
         </Box>
 
-
-        {/* =========================
-            MOVIE INFORMATION
-        ========================= */}
-
         <CardContent className="movie-content">
-
-          {/* Movie Title */}
-
           <Typography
             variant="h6"
             className="movie-title"
@@ -51,26 +36,13 @@ function MovieCard({ movie }) {
             {movie.title}
           </Typography>
 
-
-          {/* Year */}
-
-          <Typography
-            className="movie-year"
-          >
+          <Typography className="movie-year">
             • {movie.year}
           </Typography>
 
-
-          {/* Description */}
-
-          <Typography
-            className="movie-description"
-          >
+          <Typography className="movie-description">
             {movie.description}
           </Typography>
-
-
-          {/* View Details */}
 
           <Button
             className="view-details-button"
@@ -79,22 +51,14 @@ function MovieCard({ movie }) {
           >
             VIEW DETAILS
           </Button>
-
         </CardContent>
-
       </Card>
-
-
-      {/* =========================
-          MOVIE DETAILS
-      ========================= */}
 
       <MovieDetails
         movie={movie}
         open={open}
         onClose={() => setOpen(false)}
       />
-
     </>
   );
 }

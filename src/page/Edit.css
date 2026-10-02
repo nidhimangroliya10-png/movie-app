@@ -1,10 +1,5 @@
-/* ================================
-   EDIT PAGE
-================================ */
-
 .edit-page {
   min-height: 100vh;
-
   padding: 30px;
 }
 
@@ -12,67 +7,35 @@
   width: 100%;
 }
 
-
-/* ================================
-   TITLE
-================================ */
-
 .edit-title {
   margin-bottom: 25px;
-
   font-weight: bold;
 }
-
-
-/* ================================
-   TABLE
-================================ */
 
 .table-box {
   width: 100%;
 }
 
-
-/* ================================
-   TOOLBAR
-================================ */
-
 .edit-toolbar {
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
   margin-bottom: 15px;
 }
 
-
-/* ================================
-   SEARCH
-================================ */
-
 .search-box {
   display: flex;
-
   align-items: center;
-
   gap: 8px;
-
   border: 1px solid #cbd5e1;
-
   border-radius: 9px;
-
   padding: 5px 10px;
-
   width: 300px;
-
   background: #ffffff;
 }
 
 .search-icon {
   font-size: 22px;
-
   color: #64748b;
 }
 
@@ -80,34 +43,18 @@
   flex: 1;
 }
 
-
-/* ================================
-   DOWNLOAD
-================================ */
-
 .download-button {
   margin-left: auto;
 }
 
-
-/* ================================
-   DATA GRID
-================================ */
-
 .data-grid-box {
   width: 100%;
-
   height: 500px;
 }
 
 .movie-data-grid {
   width: 100%;
 }
-
-
-/* ================================
-   BUTTONS
-================================ */
 
 .edit-button {
   text-transform: none;
@@ -121,11 +68,6 @@
   text-transform: none;
 }
 
-
-/* ================================
-   DIALOG
-================================ */
-
 .dialog-title {
   font-weight: bold;
 }
@@ -136,9 +78,7 @@
 
 .form-grid {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 15px;
 }
 
@@ -150,11 +90,6 @@
   padding: 15px 24px;
 }
 
-
-/* ================================
-   MOBILE
-================================ */
-
 @media (max-width: 700px) {
   .edit-page {
     padding: 20px;
@@ -162,9 +97,7 @@
 
   .edit-toolbar {
     flex-direction: column;
-
     align-items: stretch;
-
     gap: 12px;
   }
 

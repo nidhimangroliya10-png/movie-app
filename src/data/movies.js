@@ -1,7 +1,6 @@
 import twelveFail from "../assets/12th Fail.jpg";
 import eightyThree from "../assets/83.jpg";
 import bhuj from "../assets/bhuj.jpg";
-import aladdin from "../assets/Aladdin.jpg";
 import chanduChampion from "../assets/Chandu Champion.jpg";
 import chhichhore from "../assets/Chhichhore.jpg";
 import crakk from "../assets/Crakk.jpg";
@@ -19,25 +18,7 @@ import maidaan from "../assets/Maidaan.jpg";
 import major from "../assets/major.jpg";
 import missionMangal from "../assets/Mission Mangal.jpg";
 import operationValentine from "../assets/operationvalentine.jpg";
-import panga from "../assets/Panga.jpg";
-import pathaan from "../assets/Pathaan.jpg";
-import pippa from "../assets/pipa.jpg";
-import rashmiRocket from "../assets/Rashmi Rocket.jpg";
-import rrr from "../assets/RRR.jpg";
-import salaar from "../assets/Salaar.jpg";
-import samBahadur from "../assets/SamBhadur.jpg";
-import sardarKaGrandson from "../assets/sardarkagrandson.jpg";
-import shabaashMithu from "../assets/Shabaash Mithu.jpg";
-import shershaah from "../assets/Shershaah.jpg";
-import sitaareZameenPar from "../assets/Sitaare Zameen Par.jpg";
-import srikanth from "../assets/Srikanth.jpg";
-import super30 from "../assets/Super 30.jpg";
-import taareZameenPar from "../assets/Taare Zameen Par.jpg";
-import ghaziAttack from "../assets/theghaziattack.jpg";
-import tiger3 from "../assets/Tiger3.jpg";
-import toofan from "../assets/Toofan.jpg";
-import udaan from "../assets/Udaan.jpg";
-import uri from "../assets/uri.jpg";
+
 
 const movies = [
   {

@@ -19,7 +19,6 @@ function App() {
   const [search, setSearch] = useState("");
   const [mode, setMode] = useState("light");
 
-  // Theme
   const theme = createTheme({
     palette: {
       mode: mode,
@@ -29,7 +28,6 @@ function App() {
     },
   });
 
-  // Dark / Light
   const toggleTheme = () => {
     setMode(
       mode === "light"
@@ -43,7 +41,6 @@ function App() {
       <CssBaseline />
 
       <BrowserRouter>
-
         <Navbar
           search={search}
           setSearch={setSearch}
@@ -52,7 +49,6 @@ function App() {
         />
 
         <Routes>
-
           <Route
             path="/"
             element={<Home search={search} />}
@@ -67,9 +63,7 @@ function App() {
             path="/sort"
             element={<Sort />}
           />
-
         </Routes>
-
       </BrowserRouter>
     </ThemeProvider>
   );
